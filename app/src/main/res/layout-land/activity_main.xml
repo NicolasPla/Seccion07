@@ -17,13 +17,4 @@
         />
 
 
-    <fragment
-        android:id="@+id/detailsFragment"
-        android:name="com.example.seccion07.Fragments.DetailsFragment"
-        android:layout_width="0dp"
-        android:layout_height="match_parent"
-        android:layout_weight="1"
-        tools:layout="@layout/fragment_details"
-        />
-
 </LinearLayout>
