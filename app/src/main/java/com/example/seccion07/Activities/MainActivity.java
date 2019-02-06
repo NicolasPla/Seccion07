@@ -16,6 +16,8 @@ public class MainActivity extends AppCompatActivity implements DataFragment.Data
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        setMultiPanel();
     }
 
     @Override
@@ -23,9 +25,15 @@ public class MainActivity extends AppCompatActivity implements DataFragment.Data
         /* Llmar al metodo renderizarTexto en el DetailsFragment
             pasando el texto que recibamos por parametro en este mismo metodo */
 
-        DetailsFragment detailsFragment = (DetailsFragment) getSupportFragmentManager()
-                .findFragmentById(R.id.detailsFragment);
-        detailsFragment.renderText(text);
+        if (isMultiPanel){
+            DetailsFragment detailsFragment = (DetailsFragment) getSupportFragmentManager().findFragmentById(R.id.detailsFragment);
+            detailsFragment.renderText(text);
+        }else {
+            Intent intent = new Intent(this, DetailsActivity.class);
+            // Envia string a la nueva activity
+            intent.putExtra("text", text);
+            startActivity(intent);
+        }
     }
 
     private void setMultiPanel(){
